@@ -46,15 +46,22 @@ exports.register = (req,res) =>{
                     message:"username is already taken"
                 })
             }else{
-                user.create(req.body,(err,doc)=>{
-                    if(err){
-                        message:"Something wrong while register"
-                    }else{
-                        res.send({
-                            message:"Register success"
-                        })
-                    }
-                })
+                if(Object.keys(req.body).length == 3){
+                    user.create(req.body,(err,doc)=>{
+                        if(err){
+                            message:"Something wrong while register"
+                        }else{
+                            res.send({
+                                message:"Register success"
+                            })
+                        }
+                    })
+                }
+                else{
+                    res.send({
+                        message:"Oops all inputs could not be empty"
+                    })
+                }
             }
         }
     })
