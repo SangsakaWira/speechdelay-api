@@ -1,9 +1,12 @@
 const mongoose = require("mongoose")
 
 let videoSchema = mongoose.Schema({
-    alamat:String
+    title:String,
+    gambar:String,
+    videos:String,
+    tipe:String
 })
 
-let video = mongoose.model("user",userSchema)
+let video = mongoose.model("video",userSchema)
 
 module.exports = video

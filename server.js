@@ -19,6 +19,8 @@ mongoose.connection.once('open', () => console.log('DB connected'))
 mongoose.set('useFindAndModify', false)
 mongoose.set('useCreateIndex', true)
 
+app.use(express.static("gambar"))
+
 let port = process.env.PORT || 3000
 
 const userRoutes = require("./routes/user")
