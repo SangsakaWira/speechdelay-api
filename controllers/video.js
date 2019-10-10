@@ -1,4 +1,4 @@
-let video = require("../models/user")
+let video = require("../models/video")
 
 exports.getAll = (req,res)=>{
     video.find((err,doc)=>{

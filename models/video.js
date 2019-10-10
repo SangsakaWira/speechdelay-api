@@ -7,6 +7,6 @@ let videoSchema = mongoose.Schema({
     tipe:String
 })
 
-let video = mongoose.model("video",userSchema)
+let video = mongoose.model("video",videoSchema)
 
 module.exports = video

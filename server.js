@@ -20,6 +20,7 @@ mongoose.set('useFindAndModify', false)
 mongoose.set('useCreateIndex', true)
 
 app.use(express.static("gambar"))
+app.use(express.static("videos"))
 
 let port = process.env.PORT || 3000
 
