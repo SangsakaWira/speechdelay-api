@@ -1,0 +1,1 @@
+mongoimport --db speechdelay --collection videos --type csv --headerline --file bendas.csv

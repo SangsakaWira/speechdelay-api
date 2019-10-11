@@ -4,7 +4,8 @@ let videoSchema = mongoose.Schema({
     title:String,
     gambar:String,
     videos:String,
-    tipe:String
+    tipe:String,
+    host:String
 })
 
 let video = mongoose.model("video",videoSchema)

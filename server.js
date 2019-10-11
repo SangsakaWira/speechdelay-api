@@ -26,9 +26,11 @@ let port = process.env.PORT || 3000
 
 const userRoutes = require("./routes/user")
 const videoRoutes = require("./routes/video")
+const ipRoutes =require("./routes/ip")
 
 app.use("/user",userRoutes)
 app.use("/video",videoRoutes)
+app.use("/ip",ipRoutes)
 
 app.listen(port,()=>{
     console.log("Server is running!")
