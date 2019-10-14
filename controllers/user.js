@@ -1,4 +1,7 @@
 let user = require("../models/user")
+const bcrypt = require("bcrypt")
+const saltRounds = 12
+let salt = bcrypt.genSaltSync(saltRounds);
 
 // ALL GET DATA
 exports.getAll = (req,res)=>{
@@ -30,7 +33,11 @@ exports.getById = (req,res) =>{
 
 // LOGIN & REGISTER
 exports.login = (req,res) =>{
-    user.find({username:req.body.username,password:req.body.password},(err,doc)=>{
+    user.find({username:req.body.username},(err,doc)=>{
+    // console.log(doc[0].username)
+    let pass = bcrypt.compareSync(req.body.password,doc[0].password); // true
+    // pass = true
+    if(pass){
         if(err){
             res.send({
                 message:"Something wrong!"
@@ -47,11 +54,16 @@ exports.login = (req,res) =>{
                 })
             }
         }
+    }else{
+        res.send({
+            message:"Wrong Password"
+        })
+    }
     })
 }
 
 exports.register = (req,res) =>{
-    user.find({username:req.body.username},(err,doc)=>{
+    user.find({$or:[{username:req.body.username},{email:req.body.email}]},(err,doc)=>{
         if(err){
             res.send({
                 message:"Something wrong!"
@@ -59,17 +71,25 @@ exports.register = (req,res) =>{
         }else{
             if(doc.length != 0){
                 res.send({
-                    message:"username is already taken"
+                    message:"username or email is already taken"
                 })
             }else{
                 if(Object.keys(req.body).length == 3){
-                    user.create(req.body,(err,doc)=>{
+                    let hashPassword = bcrypt.hashSync(req.body.password, saltRounds);
+                    let newUser = {
+                        username:req.body.username,
+                        password:hashPassword,
+                        email:req.body.email
+                    }
+                    user.create(newUser,(err,doc)=>{
                         if(err){
-                            message:"Something wrong while register"
+                            res.send(
+                                {message:"Something wrong while register"}
+                            )
                         }else{
                             res.send({
                                 message:1,
-                                data:doc
+                                data:newUser
                             })
                         }
                     })
