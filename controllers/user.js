@@ -13,6 +13,19 @@ exports.getAll = (req,res)=>{
     })
 }
 
+// GET BY ID
+exports.getById = (req,res) =>{
+    user.findById(req.params.id,(err,doc)=>{
+        if(err){
+            res.send({
+                message:err
+            })
+        }else{
+            res.send(doc)
+        }
+    })
+}
+
 // LOGIN & REGISTER
 exports.login = (req,res) =>{
     user.find({username:req.body.username,password:req.body.password},(err,doc)=>{
@@ -23,7 +36,8 @@ exports.login = (req,res) =>{
         }else{
             if(doc.length == 1){
                 res.send({
-                    message:"Success"
+                    message:1,
+                    data:doc
                 })
             }else{
                 res.send({
@@ -52,7 +66,8 @@ exports.register = (req,res) =>{
                             message:"Something wrong while register"
                         }else{
                             res.send({
-                                message:"Register success"
+                                message:1,
+                                data:doc
                             })
                         }
                     })
