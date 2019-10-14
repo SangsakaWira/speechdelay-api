@@ -15,6 +15,7 @@ exports.getAll = (req,res)=>{
         }else{
             doc.map((data)=>{
                 datas.push({
+                    id:data._id,
                     title:data.title,
                     gambar:host+"/"+"benda"+"/"+data.gambar,
                     videos:host+"/"+"benda"+"/"+data.videos
@@ -23,6 +24,18 @@ exports.getAll = (req,res)=>{
             res.send({
                 data:datas
             })
+        }
+    })
+}
+
+exports.getById = (req,res)=>{
+    video.findById(req.params.id,(err,doc)=>{
+        if(err){
+            res.send({
+                message:"error"
+            })
+        }else{
+            res.send(doc)
         }
     })
 }
