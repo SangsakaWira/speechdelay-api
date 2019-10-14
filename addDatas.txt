@@ -1,1 +1,2 @@
 mongoimport --db speechdelay --collection videos --type csv --headerline --file bendas.csv
+mongoimport --db speechdelay --collection ips --type csv --headerline --file ip.csv

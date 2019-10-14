@@ -20,7 +20,9 @@ exports.getAll = (req,res)=>{
                     videos:host+"/"+"benda"+"/"+data.videos
                 })
             })
-            res.send(datas)
+            res.send({
+                data:datas
+            })
         }
     })
 }

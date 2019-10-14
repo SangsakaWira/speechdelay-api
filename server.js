@@ -22,7 +22,7 @@ mongoose.set('useCreateIndex', true)
 app.use(express.static("gambar"))
 app.use(express.static("videos"))
 
-let port = process.env.PORT || 3000
+let port = process.env.PORT || 4500
 
 const userRoutes = require("./routes/user")
 const videoRoutes = require("./routes/video")
