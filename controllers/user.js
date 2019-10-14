@@ -21,7 +21,9 @@ exports.getById = (req,res) =>{
                 message:err
             })
         }else{
-            res.send(doc)
+            res.send({
+                data:doc
+            })
         }
     })
 }
