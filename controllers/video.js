@@ -99,8 +99,8 @@ exports.getById = (req,res)=>{
             let datas = {
                 title:doc.title,
                 tipe:data.tipe,
-                gambar:host+"/"+data.tipe+"/"+doc.gambar,
-                videos:host+"/"+data.tipe+"/"+doc.videos
+                gambar:host+"/"+doc.tipe+"/"+doc.gambar,
+                videos:host+"/"+doc.tipe+"/"+doc.videos
             }
             res.send({data:[datas]})
         }
