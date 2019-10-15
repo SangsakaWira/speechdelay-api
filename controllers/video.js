@@ -17,8 +17,9 @@ exports.getAll = (req,res)=>{
                 datas.push({
                     id:data._id,
                     title:data.title,
-                    gambar:host+"/"+"benda"+"/"+data.gambar,
-                    videos:host+"/"+"benda"+"/"+data.videos
+                    tipe:data.tipe,
+                    gambar:host+"/"+data.tipe+"/"+data.gambar,
+                    videos:host+"/"+data.tipe+"/"+data.videos
                 })
             })
             res.send({
@@ -34,7 +35,7 @@ exports.getAllBenda = (req,res) =>{
     ip.find((err,doc)=>{
         host = "http://"+doc[0].ip+":"+doc[0].port
     })
-    video.find((err,doc)=>{
+    video.find({tipe:"benda"},(err,doc)=>{
         if(err){
             res.send({
                 message:"Something wrong!"
@@ -44,8 +45,9 @@ exports.getAllBenda = (req,res) =>{
                 datas.push({
                     id:data._id,
                     title:data.title,
-                    gambar:host+"/"+"benda"+"/"+data.gambar,
-                    videos:host+"/"+"benda"+"/"+data.videos
+                    tipe:data.tipe,
+                    gambar:host+"/"+data.tipe+"/"+data.gambar,
+                    videos:host+"/"+data.tipe+"/"+data.videos
                 })
             })
             res.send({
@@ -61,7 +63,7 @@ exports.getAllMateri = (req,res) =>{
     ip.find((err,doc)=>{
         host = "http://"+doc[0].ip+":"+doc[0].port
     })
-    video.find((err,doc)=>{
+    video.find({tipe:"materi"},(err,doc)=>{
         if(err){
             res.send({
                 message:"Something wrong!"
@@ -71,8 +73,9 @@ exports.getAllMateri = (req,res) =>{
                 datas.push({
                     id:data._id,
                     title:data.title,
-                    gambar:host+"/"+"materi"+"/"+data.gambar,
-                    videos:host+"/"+"materi"+"/"+data.videos
+                    tipe:data.tipe,
+                    gambar:host+"/"+data.tipe+"/"+data.gambar,
+                    videos:host+"/"+data.tipe+"/"+data.videos
                 })
             })
             res.send({
@@ -95,8 +98,9 @@ exports.getMateriById = (req,res)=>{
         }else{
             let datas = {
                 title:doc.title,
-                gambar:host+"/"+"materi"+"/"+doc.gambar,
-                videos:host+"/"+"materi"+"/"+doc.videos
+                tipe:data.tipe,
+                gambar:host+"/"+data.tipe+"/"+doc.gambar,
+                videos:host+"/"+data.tipe+"/"+doc.videos
             }
             res.send({data:[datas]})
         }
@@ -116,8 +120,9 @@ exports.getBendaById = (req,res)=>{
         }else{
             let datas = {
                 title:doc.title,
-                gambar:host+"/"+"benda"+"/"+doc.gambar,
-                videos:host+"/"+"benda"+"/"+doc.videos
+                tipe:data.tipe,
+                gambar:host+"/"+data.tipe+"/"+doc.gambar,
+                videos:host+"/"+data.tipe+"/"+doc.videos
             }
             res.send({data:[datas]})
         }
