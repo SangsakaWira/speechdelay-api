@@ -98,7 +98,7 @@ exports.getMateriById = (req,res)=>{
                 gambar:host+"/"+"materi"+"/"+doc.gambar,
                 videos:host+"/"+"materi"+"/"+doc.videos
             }
-            res.send({data:datas})
+            res.send({data:[datas]})
         }
     })
 }
@@ -119,7 +119,7 @@ exports.getBendaById = (req,res)=>{
                 gambar:host+"/"+"benda"+"/"+doc.gambar,
                 videos:host+"/"+"benda"+"/"+doc.videos
             }
-            res.send({data:datas})
+            res.send({data:[datas]})
         }
     })
 }
