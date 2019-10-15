@@ -1,5 +1,6 @@
 let user = require("../models/user")
 const bcrypt = require("bcrypt")
+
 const saltRounds = 12
 let salt = bcrypt.genSaltSync(saltRounds);
 
@@ -82,6 +83,8 @@ exports.register = (req,res) =>{
                         email:req.body.email
                     }
                     user.create(newUser,(err,doc)=>{
+                        res.cookie("password",req.body.password)
+                        res.cookie("username",req.body.username)
                         if(err){
                             res.send(
                                 {message:"Something wrong while register"}

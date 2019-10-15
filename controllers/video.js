@@ -85,7 +85,7 @@ exports.getAllMateri = (req,res) =>{
     })
 }
 
-exports.getMateriById = (req,res)=>{
+exports.getById = (req,res)=>{
     let host = ""
     ip.find((err,doc)=>{
         host = "http://"+doc[0].ip+":"+doc[0].port
@@ -107,24 +107,24 @@ exports.getMateriById = (req,res)=>{
     })
 }
 
-exports.getBendaById = (req,res)=>{
-    let host = ""
-    ip.find((err,doc)=>{
-        host = "http://"+doc[0].ip+":"+doc[0].port
-    })
-    video.findById(req.params.id,(err,doc)=>{
-        if(err){
-            res.send({
-                message:"error"
-            })
-        }else{
-            let datas = {
-                title:doc.title,
-                tipe:data.tipe,
-                gambar:host+"/"+data.tipe+"/"+doc.gambar,
-                videos:host+"/"+data.tipe+"/"+doc.videos
-            }
-            res.send({data:[datas]})
-        }
-    })
-}
+// exports.getBendaById = (req,res)=>{
+//     let host = ""
+//     ip.find((err,doc)=>{
+//         host = "http://"+doc[0].ip+":"+doc[0].port
+//     })
+//     video.findById(req.params.id,(err,doc)=>{
+//         if(err){
+//             res.send({
+//                 message:"error"
+//             })
+//         }else{
+//             let datas = {
+//                 title:doc.title,
+//                 tipe:data.tipe,
+//                 gambar:host+"/"+data.tipe+"/"+doc.gambar,
+//                 videos:host+"/"+data.tipe+"/"+doc.videos
+//             }
+//             res.send({data:[datas]})
+//         }
+//     })
+// }
