@@ -26,7 +26,8 @@ exports.getById = (req,res) =>{
             })
         }else{
             res.send({
-                data:doc
+                message:1,
+                data:[doc]
             })
         }
     })
