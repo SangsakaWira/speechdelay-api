@@ -93,7 +93,7 @@ exports.register = (req,res) =>{
                         }else{
                             res.send({
                                 message:1,
-                                data:newUser
+                                data:[newUser]
                             })
                         }
                     })
