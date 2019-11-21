@@ -8,5 +8,6 @@ router.get("/getById/:id",videoController.getById)
 // router.get("/getMateriById/:id",videoController.getMateriById)
 router.get("/getAllBenda",videoController.getAllBenda)
 router.get("/getAllMateri",videoController.getAllMateri)
+router.get("/getVideoByName/:title",videoController.getVideoByName)
 
 module.exports = router

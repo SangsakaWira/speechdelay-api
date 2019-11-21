@@ -128,3 +128,17 @@ exports.getById = (req,res)=>{
 //         }
 //     })
 // }
+
+exports.getVideoByName = (req,res)=>{
+    video.findOne({title:req.params.title},(err,doc)=>{
+        if(err){
+            res.send({
+                message:"error"
+            })
+        }else{
+            res.send({
+                doc:[doc]
+            })
+        }
+    })
+}
