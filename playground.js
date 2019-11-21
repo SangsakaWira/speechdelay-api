@@ -1,11 +1,7 @@
-// const path = require("path")
-const fs = require("fs")
-const express = require("express")
-// const root = path.join(__dirname+"/..")
+let name = [1,2,3]
 
-const app = express()
-app.use(express.static("gambar"))
+name = [...name,4,5]
+console.log(name)
 
-app.listen(5000,()=>{
-    console.log("Server is running!")
-})
+name = [...name,6,7]
+console.log(name)

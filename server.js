@@ -6,11 +6,8 @@ const session = require('express-session');
  
 const app = express()
 app.use(cookieParser())
-
-app.use(session({secret: 'cobasession'}));
-
+app.use(session({secret: 'cobasession',saveUninitialized:true,resave:true}));
 app.use(bodyParser.urlencoded({ extended: false }))
-
 app.use(bodyParser.json())
 
 mongoose.connect('mongodb://localhost/speechdelay', {

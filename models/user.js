@@ -12,7 +12,11 @@ let userSchema = mongoose.Schema({
     email:{
         required:true,
         type:String
-    }
+    },
+    achievement:[{
+        type:String,
+        unique:true
+    }]
 })
 
 let user = mongoose.model("user",userSchema)

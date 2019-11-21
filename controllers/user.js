@@ -81,7 +81,8 @@ exports.register = (req,res) =>{
                     let newUser = {
                         username:req.body.username,
                         password:hashPassword,
-                        email:req.body.email
+                        email:req.body.email,
+                        achievement:[]
                     }
                     user.create(newUser,(err,doc)=>{
                         res.cookie("password",req.body.password)
@@ -104,6 +105,104 @@ exports.register = (req,res) =>{
                     })
                 }
             }
+        }
+    })
+}
+
+
+exports.getByUsernameAndUpdate = (req,res)=>{
+    user.findOneAndUpdate({
+        username:req.params.username
+    }, {
+        $push: {
+            achievement:req.params.item
+        }
+    }, {
+        new: true
+    }, function (err, doc) {
+        if (err) {
+            console.log("Something wrong when updating data!");
+            res.send({
+                message:"Something wrong when updating data!"
+            })
+        }
+        else{
+            res.send({
+                message:"Success"
+            })
+        }
+    })
+}
+
+exports.getByIdAndUpdate = (req,res)=>{
+    user.findByIdAndUpdate({
+        _id:req.params.id
+    }, {
+        $push: {
+            achievement:req.params.item
+        }
+    }, {
+        new: true
+    }, function (err, doc) {
+        if (err) {
+            console.log("Something wrong when updating data!");
+            res.send({
+                message:"Something wrong when updating data!"
+            })
+        }
+        else{
+            res.send({
+                message:"Success"
+            })
+        }
+    })
+}
+
+
+exports.getByIdAndDelete = (req,res)=>{
+    user.findByIdAndUpdate({
+        _id:req.params.id
+    }, {
+        $set: {
+            achievement:[]
+        }
+    }, {
+        new: true
+    }, function (err, doc) {
+        if (err) {
+            console.log("Something wrong when updating data!");
+            res.send({
+                message:"Something wrong when updating data!"
+            })
+        }
+        else{
+            res.send({
+                message:"Success"
+            })
+        }
+    })
+}
+
+exports.getByUsernameAndDelete = (req,res)=>{
+    user.findOneAndUpdate({
+        username:req.params.username
+    }, {
+        $set: {
+            achievement:[]
+        }
+    }, {
+        new: true
+    }, function (err, doc) {
+        if (err) {
+            console.log("Something wrong when updating data!");
+            res.send({
+                message:"Error, data is not updated"
+            })
+        }
+        else{
+            res.send({
+                message:"Success"
+            })
         }
     })
 }
