@@ -8,8 +8,8 @@ router.get("/getAll",userController.getAll)
 
 // GET USER BY ID
 router.get("/getById/:id",userController.getById)
-router.get("/getByUserAndUpdate/:username/:item",userController.getByUsernameAndUpdate)
-router.get("/getByUserAndDelete/:username",userController.getByUsernameAndDelete)
+// router.get("/getByUserAndUpdate/:username/:item",userController.getByUsernameAndUpdate)
+// router.get("/getByUserAndDelete/:username",userController.getByUsernameAndDelete)
 router.get("/getByIdAndUpdate/:id/:item",userController.getByIdAndUpdate)
 router.get("/getByIdAndDelete/:id",userController.getByIdAndUpdate)
 router.get("/getAchievementById/:id",userController.getAchievementById)
