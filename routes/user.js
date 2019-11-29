@@ -11,7 +11,7 @@ router.get("/getById/:id",userController.getById)
 // router.get("/getByUserAndUpdate/:username/:item",userController.getByUsernameAndUpdate)
 // router.get("/getByUserAndDelete/:username",userController.getByUsernameAndDelete)
 router.get("/getByIdAndUpdate/:id/:item",userController.getByIdAndUpdate)
-router.get("/getByIdAndDelete/:id",userController.getByIdAndUpdate)
+router.get("/getByIdAndDelete/:id",userController.getByIdAndDelete)
 router.get("/getAchievementById/:id",userController.getAchievementById)
 
 // LOGIN AND REGISTER
