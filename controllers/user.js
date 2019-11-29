@@ -206,3 +206,15 @@ exports.getByUsernameAndDelete = (req,res)=>{
         }
     })
 }
+
+exports.getAchievementById = (req,res)=>{
+    user.findById(req.params.id,(err,doc)=>{
+        if(err){
+            res.send({message:"error"})
+        }else{
+            res.send({
+                achievement:[... new Set(doc.achievement)]
+            })
+        }
+    })
+}
