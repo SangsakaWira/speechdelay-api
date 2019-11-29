@@ -98,7 +98,7 @@ exports.getById = (req,res)=>{
         }else{
             let datas = {
                 title:doc.title,
-                tipe:data.tipe,
+                tipe:doc.tipe,
                 gambar:host+"/"+doc.tipe+"/"+doc.gambar,
                 videos:host+"/"+doc.tipe+"/"+doc.videos
             }
