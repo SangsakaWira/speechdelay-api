@@ -35,9 +35,9 @@ exports.getById = (req,res) =>{
 
 // LOGIN & REGISTER
 exports.login = (req,res) =>{
-    user.find({username:req.body.username},(err,doc)=>{
-    // console.log(doc[0].username)
-    let pass = bcrypt.compareSync(req.body.password,doc[0].password); // true
+    user.findOne({$or:[{email:req.body.email},{username:req.body.username}]},(err,doc)=>{
+        console.log(doc)
+    let pass = bcrypt.compareSync(req.body.password,doc.password); // true
     // pass = true
     if(pass){
         if(err){
@@ -45,10 +45,10 @@ exports.login = (req,res) =>{
                 message:"Something wrong!"
             })
         }else{
-            if(doc.length == 1){
+            if(doc){
                 res.send({
                     message:1,
-                    data:doc
+                    data:[doc]
                 })
             }else{
                 res.send({
